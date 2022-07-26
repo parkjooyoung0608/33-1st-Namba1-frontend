@@ -10,7 +10,6 @@ import API from '../../config';
 const Signup = () => {
   const [numberInputValue, setNumberInputValue] = useState('');
   const [birthInputValue, setBirthInputValue] = useState('');
-
   const [allCheck, setAllCheck] = useState(false);
   const [ageCheck, setAgeCheck] = useState(false);
   const [termsCheck, setTermsCheck] = useState(false);
