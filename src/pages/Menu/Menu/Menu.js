@@ -3,8 +3,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import Category from './components/category/Category';
 import Order from './components/Order';
 import MenuCard from './components/MenuCard';
-import Nav from '../../../components/Nav/Nav';
-import Footer from '../../../components/Footer/Footer';
+import Nav from 'components/Nav/Nav';
+import Footer from 'components/Footer/Footer';
+import API from 'config';
 import './Menu.scss';
 
 const Menu = () => {
@@ -24,7 +25,7 @@ const Menu = () => {
   };
 
   useEffect(() => {
-    fetch(`http://10.58.5.148:8000/products${location.search}`)
+    fetch(`${API.products}${location.search}`)
       .then(response => response.json())
       .then(data => setMenuCard(data.product_list));
   }, [location.search]);

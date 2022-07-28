@@ -2,28 +2,31 @@ import React from 'react';
 import './Signin.scss';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Nav from '../../components/Nav/Nav';
-import Footer from '../../components/Footer/Footer';
+import Nav from 'components/Nav/Nav';
+import Footer from 'components/Footer/Footer';
+import API from 'config';
 
 const Signin = () => {
-  const [inputId, setInputId] = useState('');
-  const [inputPw, setInputPassword] = useState('');
+  const [inputLogin, setInputLogin] = useState({
+    email: '',
+    password: '',
+  });
 
-  const handleIdInput = e => {
-    setInputId(e.target.value);
-  };
-  const handlePwInput = e => {
-    setInputPassword(e.target.value);
+  const { email, password } = inputLogin;
+
+  const handleLogin = e => {
+    const { name, value } = e.target;
+    setInputLogin({ ...inputLogin, [name]: value });
   };
 
   const navigate = useNavigate();
   const goToSignUp = e => {
     e.preventDefault();
-    fetch('http://10.58.5.148:8000/user/login', {
+    fetch(`${API.signIn}`, {
       method: 'POST',
       body: JSON.stringify({
-        email: inputId,
-        password: inputPw,
+        email,
+        password,
       }),
     })
       .then(res => res.json())
@@ -32,14 +35,10 @@ const Signin = () => {
           localStorage.setItem('Token', result.Token);
           localStorage.setItem('USER_NAME', result.USER_NAME);
           navigate('/');
-          // 1. token
-          // 2. userName -> save, localStorage
         } else {
-          alert('로그인 실패!');
+          alert('이메일 또는 비밀번호를 정확히 입력해 주세요!');
         }
       });
-
-    // TODO : 전역 상태로 바꾸기!
   };
 
   const idCondition =
@@ -47,8 +46,8 @@ const Signin = () => {
 
   const pwCondition = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
 
-  const isValidId = idCondition.test(inputId);
-  const isValidPw = pwCondition.test(inputPw);
+  const isValidId = idCondition.test(email);
+  const isValidPw = pwCondition.test(password);
   const valid = isValidId && isValidPw;
 
   return (
@@ -60,13 +59,15 @@ const Signin = () => {
         </div>
         <form className="userForm">
           <input
-            onChange={handleIdInput}
+            onChange={handleLogin}
+            name="email"
             className="userName"
-            type="text"
+            type="email"
             placeholder="아이디"
           />
           <input
-            onChange={handlePwInput}
+            onChange={handleLogin}
+            name="password"
             className="password"
             type="password"
             placeholder="비밀번호"

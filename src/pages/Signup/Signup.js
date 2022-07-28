@@ -2,14 +2,14 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Signup.scss';
-import SignUpForm from '../../components/SignUpForm';
-import Nav from '../../components/Nav/Nav';
-import Footer from '../../components/Footer/Footer';
+import SignUpForm from './SignUpForm';
+import Nav from 'components/Nav/Nav';
+import Footer from 'components/Footer/Footer';
+import API from 'config';
 
 const Signup = () => {
   const [numberInputValue, setNumberInputValue] = useState('');
   const [birthInputValue, setBirthInputValue] = useState('');
-
   const [allCheck, setAllCheck] = useState(false);
   const [ageCheck, setAgeCheck] = useState(false);
   const [termsCheck, setTermsCheck] = useState(false);
@@ -29,13 +29,14 @@ const Signup = () => {
   });
 
   const { email, name, password, passwordConfirm } = inputValue;
+
   const handleInput = e => {
     const { name, value } = e.target;
     setInputValue({ ...inputValue, [name]: value });
   };
   const navigate = useNavigate();
   const goSignUp = e => {
-    fetch('http://10.58.5.148:8000/user/signup', {
+    fetch(`${API.signUp}`, {
       method: 'POST',
       body: JSON.stringify({
         email: email,
@@ -52,7 +53,7 @@ const Signup = () => {
         res.json();
       })
       .then(result => {});
-    navigate('/');
+    navigate('/signin');
   };
 
   const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^~*+=-])(?=.*[0-9]).{8,}$/;

@@ -1,9 +1,9 @@
 import React from 'react';
+import Nav from 'components/Nav/Nav';
+import BestReviewCarousel from './BestReviewCarousel/BestReviewCarousel';
+import ReviewListContainer from './ReviewListContainer/ReviewListContainer';
+import Footer from 'components/Footer/Footer';
 import './Review.scss';
-import BestReview from '../../components/Review/BestReview';
-import ReviewBox from '../../components/Review/ReviewBox';
-import Nav from '../../components/Nav/Nav';
-import Footer from '../../components/Footer/Footer';
 
 function Review() {
   return (
@@ -12,8 +12,8 @@ function Review() {
         <Nav />
         <h1 className="reviewHeader">리뷰</h1>
         <hr />
-        <BestReview />
-        <ReviewBox />
+        <BestReviewCarousel />
+        <ReviewListContainer />
       </div>
       <Footer />
     </>

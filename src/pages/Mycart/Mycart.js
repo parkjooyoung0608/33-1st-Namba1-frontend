@@ -13,7 +13,7 @@ import {
   faCircleCheck,
   faCreditCard,
 } from '@fortawesome/free-regular-svg-icons';
-import MyCartForm from '../../components/MyCartForm';
+import MyCartForm from './MyCartForm';
 const Mycart = () => {
   const [count, setCount] = useState(1);
   const [productList, setProductList] = useState();
@@ -126,14 +126,5 @@ const Mycart = () => {
     </div>
   );
 };
-
-const MYCART_LIST = [
-  {
-    id: '1',
-    img: 'https://images.unsplash.com/photo-1545247181-516773cae754?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80',
-    price: '28,000원',
-    count: '1',
-  },
-];
 
 export default Mycart;
