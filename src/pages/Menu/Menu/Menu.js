@@ -3,10 +3,10 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import Category from './components/category/Category';
 import Order from './components/Order';
 import MenuCard from './components/MenuCard';
-import Nav from '../../../components/Nav/Nav';
-import Footer from '../../../components/Footer/Footer';
+import Nav from 'components/Nav/Nav';
+import Footer from 'components/Footer/Footer';
+import API from 'config';
 import './Menu.scss';
-import API from '../../../config';
 
 const Menu = () => {
   const [menuCard, setMenuCard] = useState([]);

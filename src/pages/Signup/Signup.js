@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Signup.scss';
 import SignUpForm from './SignUpForm';
-import Nav from '../../components/Nav/Nav';
-import Footer from '../../components/Footer/Footer';
-import API from '../../config';
+import Nav from 'components/Nav/Nav';
+import Footer from 'components/Footer/Footer';
+import API from 'config';
 
 const Signup = () => {
   const [numberInputValue, setNumberInputValue] = useState('');

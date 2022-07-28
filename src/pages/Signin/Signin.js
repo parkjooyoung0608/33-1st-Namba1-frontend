@@ -2,9 +2,9 @@ import React from 'react';
 import './Signin.scss';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Nav from '../../components/Nav/Nav';
-import Footer from '../../components/Footer/Footer';
-import API from '../../config';
+import Nav from 'components/Nav/Nav';
+import Footer from 'components/Footer/Footer';
+import API from 'config';
 
 const Signin = () => {
   const [inputLogin, setInputLogin] = useState({

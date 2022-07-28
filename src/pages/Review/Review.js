@@ -1,8 +1,8 @@
 import React from 'react';
-import Nav from '../../components/Nav/Nav';
+import Nav from 'components/Nav/Nav';
 import BestReviewCarousel from './BestReviewCarousel/BestReviewCarousel';
 import ReviewListContainer from './ReviewListContainer/ReviewListContainer';
-import Footer from '../../components/Footer/Footer';
+import Footer from 'components/Footer/Footer';
 import './Review.scss';
 
 function Review() {
